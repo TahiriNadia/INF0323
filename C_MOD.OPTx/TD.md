@@ -30,7 +30,7 @@ Tableau 2. Statistiques pour une représentation sérielle de la table Prêt.
 |Ordre<sub>I</sub>|100|
 
 Tableau 3. Statistiques pour une représentation sérielle de la table Membre.
-|NMembre|10 000|
+|N<sub>Membre</sub>|10 000|
 |:----|:----|
 |FBM<sub>Membre</sub>|80|
 |Card<sub>Membre</sub>(idMembre)|10 000|
