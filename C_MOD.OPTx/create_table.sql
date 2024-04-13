@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS Membre;
+DROP TABLE IF EXISTS Pret;
 
 CREATE TABLE Membre (
   idMembre SERIAL  NOT NULL,
@@ -7,3 +8,10 @@ CREATE TABLE Membre (
   PRIMARY KEY (idMembre)
 );
 
+CREATE TABLE Pret (
+  noSequence SERIAL  NOT NULL,
+  datePret DATE,
+  idMembre INTEGER REFERENCES Membre,
+  idExemplaire INTEGER UNIQUE,
+  PRIMARY KEY (noSequence)
+);
