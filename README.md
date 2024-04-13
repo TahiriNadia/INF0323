@@ -20,5 +20,5 @@ initiation à la programmation, au génie logiciel et aux bases de données (X1 
 | No | Thème | Objectifs | TS | CM | TD | TP | TPE |
 |----|-------|-----------|----|----|----|----|----|
 | 1 (C_MOD.OPTx)  | Optimisation des requêtes | * indexation <br> * arbres d’expression <br> * permutations euristiques <br> * réduction, extension et fonctions de cout <br> * utilisation des plans d’exécution en SQL | 1 et 6 | 12 | ? | ? | ? |
-| 2 C_MOD_CO3x  | Approfondissement de la conception relationnelle | * 1FN <br> * FNBC <br> * 5FN <br> * Inférence directe d’un schéma relationnel à partir des dépendances fonctionnelles | 1 | 12 | ? | ? | ? |
-| 3 C_MOD_CO4x | Problématique des données manquantes et solutions | * Logiques à 3 valeurs (de Priest, Belnap faible, SQL) <br> * Logique à 4 valeurs <br> * Décomposition de projet-jointure <br> * Décomposition de restruction-union | - | - | - | - | - |
+| 2 C_MOD_CO3x)  | Approfondissement de la conception relationnelle | * 1FN <br> * FNBC <br> * 5FN <br> * Inférence directe d’un schéma relationnel à partir des dépendances fonctionnelles | 1 | 12 | ? | ? | ? |
+| 3 C_MOD_CO4x) | Problématique des données manquantes et solutions | * Logiques à 3 valeurs (de Priest, Belnap faible, SQL) <br> * Logique à 4 valeurs <br> * Décomposition de projet-jointure <br> * Décomposition de restruction-union | - | - | - | - | - |
