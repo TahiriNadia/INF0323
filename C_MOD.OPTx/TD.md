@@ -19,7 +19,7 @@ La base de données est composé de deux tables (Prêt et Membre) ayant les cara
 
 
 Figure1. Structure des tables Membre et Prêt.
-![Structure des tables Membre et Prêt](TD1_SGBD.png)
+![Structure des tables Membre et Prêt](TD_SGBD.png)
 
 
 Tableau 2. Statistiques pour une représentation sérielle de la table Prêt.
