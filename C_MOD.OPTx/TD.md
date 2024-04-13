@@ -23,18 +23,18 @@ Figure1. Structure des tables Membre et Prêt.
 
 
 Tableau 2. Statistiques pour une représentation sérielle de la table Prêt.
-|NPrêt|525 000|
+|N<sub>Prêt</sub>|525 000|
 |:----|:----|
-|FBMPrêt|80|
-|CardPrêt(idMembre)|10 000|
-|OrdreI|100|
+|FBM<sub>Prêt</sub>|80|
+|Card<sub>Prêt</sub>(idMembre)|10 000|
+|Ordre<sub>I</sub>|100|
 
 Tableau 3. Statistiques pour une représentation sérielle de la table Membre.
 |NMembre|10 000|
 |:----|:----|
-|FBMMembre|80|
-|CardMembre(idMembre)|10 000|
-|OrdreI|100|
+|FBM<sub>Membre</sub>|80|
+|Card<sub>Membre</sub>(idMembre)|10 000|
+|Ordre<sub>I</sub>|100|
 
 
 
