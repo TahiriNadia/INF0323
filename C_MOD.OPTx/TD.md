@@ -31,6 +31,8 @@ Tableau 3. Statistiques pour une représentation sérielle de la table Membre.
 |CardMembre(idMembre)|10 000|
 |OrdreI|100|
 
+![Structure des tables Membre et Prêt](TD1_SGBD.png)
+
 Pour chacune des questions suivantes, vous devez estimer le temps de calcul théorique et le temps de calcul réel afin de les comparer. Supposons pour la suite qu'il s'agit d'une organisation sérielle pour la table Prêt. Estimez le nombre de blocs nécessaires pour les données en supposant qu'il n'y ait aucune fragmentation interne.
 
 
