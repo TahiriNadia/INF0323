@@ -18,7 +18,7 @@ Tableau 1 Paramètres des disques
 La base de données est composé de deux tables (Prêt et Membre) ayant les caractèristiques suivantes :
 
 
-Figure1. Structure des tables Membre et Prêt.
+Figure 1. Structure des tables Membre et Prêt.
 ![Structure des tables Membre et Prêt](TD_SGBD.png)
 
 
