@@ -38,7 +38,7 @@ Tableau 3. Statistiques pour une représentation sérielle de la table Membre.
 
 
 Figure 2. Structure de la table MembrePrêt (AVANT NORMALISATION).
-![Structure de la table MembrePrêt](TD_SGBD2.png)
+![Structure de la table MembrePrêt](TD_SGBD.png)
 
 Tableau 4. Statistiques pour une représentation sérielle de la table MembrePret.
 |N<sub>Membre</sub>|525 000|
