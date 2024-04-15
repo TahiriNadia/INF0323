@@ -72,12 +72,12 @@
 
    b) **Scenario 2** : 
    ```
-   Créer une table adresse contenant idAdresse, numRue, nomRue, codePostal, ville et pays**
+   Créer une table adresse contenant idAdresse, numRue, nomRue, codePostal, ville et pays
    ```
 
    c) **Scenario 3** : 
    ```
-   Supprimer aléatoirement quelques attributs manquants dans la table DetailLivraison**
+   Supprimer aléatoirement quelques attributs manquants dans la table DetailLivraison
    ```
 
    d) **Scenario 4** : 
