@@ -65,18 +65,22 @@
 
    Implémentez les quatre scénarios et évaluez la performance théorique et réelle pour chacune des 15 requêtes de la partie 1.
 
+   a) **Scenario 1** : 
    ```
-   a) **Scenario 1** : Fusionner les tables Commande et LignesCommande
+   Fusionner les tables Commande et LignesCommande
    ```
-   
+
+   b) **Scenario 2** : 
    ```
-   b) **Scenario 2** : Créer une table adresse contenant idAdresse, numRue, nomRue, codePostal, ville et pays**
+   Créer une table adresse contenant idAdresse, numRue, nomRue, codePostal, ville et pays**
    ```
-   
+
+   c) **Scenario 3** : 
    ```
-   c) **Scenario 3** : Supprimer aléatoirement quelques attributs manquants dans la table DetailLivraison**
+   Supprimer aléatoirement quelques attributs manquants dans la table DetailLivraison**
    ```
-   
+
+   d) **Scenario 4** : 
    ```
-   d) **Scenario 4** : Scenario 1 + Supprimer aléatoirement des données dans la table nouvellement créée
+   Scenario 1 + Supprimer aléatoirement des données dans la table nouvellement créée
    ```
