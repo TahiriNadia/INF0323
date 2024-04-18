@@ -84,3 +84,8 @@
    ```
    Scenario 1 + Supprimer aléatoirement des données dans la table nouvellement créée
    ```
+
+4) **Objectif de développement durable (ODD)**
+   ```
+   Veuillez conclure sur les quatre scénarios proposés en lien avec les ODD (Objectifs de Développement Durable), en indiquant clairement les avantages et les inconvénients. Dans chaque scénario, veuillez les illustrer en indiquant quels sont les compromis pour quel bénéfice.
+   ```
