@@ -65,7 +65,7 @@
 
 #### Section D : Application Pratique - Requêtes SQL - 30 minutes
 
-14. Écrivez une requête SQL pour récupérer les noms de tous les employés ayant un salaire supérieur à 50 000 $.
+14. Écrivez une requête SQL et algèbre relationnel pour récupérer les noms de tous les employés ayant un salaire supérieur à 50 000 $.
 Schéma relationnel pour les employés :
 
    ```plaintext
@@ -80,7 +80,7 @@ Schéma relationnel pour les employés :
    --------------------------------------
    ```
 
-15. Considérez une table de base de données "Commandes" avec les colonnes (ID_Commande, ID_Client, Date_Commande, Montant_Total). Écrivez une requête SQL pour trouver le montant total des commandes passées par chaque client.
+15. Considérez une table de base de données "Commandes" avec les colonnes (ID_Commande, ID_Client, Date_Commande, Montant_Total). Écrivez une requête SQL et algèbre relationnel pour trouver le montant total des commandes passées par chaque client.
 Schéma relationnel pour les commandes :
 
    ```plaintext
@@ -95,7 +95,7 @@ Schéma relationnel pour les commandes :
    -----------------------------------------------------------
    ```
    
-16. Écrivez une requête SQL pour compter le nombre d'employés dans chaque service.
+16. Écrivez une requête SQLet algèbre relationnel  pour compter le nombre d'employés dans chaque service.
 Schéma relationnel pour les services :
 
    ```plaintext
