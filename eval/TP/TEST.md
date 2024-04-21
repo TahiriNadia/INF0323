@@ -7,7 +7,7 @@
 #### Section A : Optimisation des requêtes (C_MOD.OPTx) - 45 minutes
 
 1. **Indexation** (15 minutes)
-   - Quelle affirmation concernant l'indexation dans les bases de données est vraie ?
+   - Quelle affirmation concernant l'indexation dans les bases de données est vraie ? Justifier votre ou vos choix.
      - A) Les index accélèrent la récupération des données mais ralentissent la modification des données.
      - B) Les index sont uniquement utiles pour les petites tables.
      - C) Les index n'ont aucun impact sur les performances des requêtes.
@@ -35,22 +35,22 @@
 
 ---
 
-#### Section B : Approfondissement de la conception relationnelle (C_MOD_CO3x) - 35 minutes
+#### Section B : Approfondissement de la conception relationnelle (C_MOD_CO3x) - 20 minutes
 
-6. **1FN** (10 minutes)
+6. **1FN** (5 minutes)
    - Laquelle des affirmations suivantes décrit le mieux la Première Forme Normale (1NF) ?
      - A) Chaque ligne dans une table doit avoir un identifiant unique.
      - B) Tous les attributs dans une relation doivent être atomiques.
      - C) Il ne devrait y avoir aucun groupement répété dans une table.
      - D) La redondance des données doit être éliminée.
 
-7. **FNBC** (15 minutes)
+7. **FNBC** (10 minutes)
    - Expliquez la préservation des dépendances fonctionnelles dans la Forme Normale de Boyce-Codd (FNBC) avec un exemple.
 
 8. **5FN** (10 minutes)
    - Quand la Cinquième Forme Normale (5NF) est-elle préférée à la Forme Normale de Boyce-Codd (FNBC) dans la conception de bases de données ? Fournissez un scénario.
 
-9. **Inférence directe d’un schéma relationnel à partir des dépendances fonctionnelles** (20 minutes)
+9. **Inférence directe d’un schéma relationnel à partir des dépendances fonctionnelles** (15 minutes)
    - À partir d'un ensemble de dépendances fonctionnelles, déduisez le schéma relationnel.
 
 ---
@@ -120,6 +120,6 @@ Schéma relationnel pour les services :
    
 ---
 
-#### Section E : Question de Dissertation - 10 minutes
+#### Section E : Question de Dissertation - 25 minutes
 
 17. Discutez de l'importance de l'optimisation des requêtes dans les systèmes de gestion de base de données en mettant en lien les objectifs de développememnt durable. Fournissez des exemples de techniques utilisées pour l'optimisation des requêtes et leur impact sur les performances des bases de données.
