@@ -14,7 +14,15 @@
      - D) Les index sont principalement utilisés pour l'insertion de données.
 
 2. **Arbres d’expression** (15 minutes)
-   - En partant de l'expression : (A ET B) OU (C ET D), dessinez l'arbre d'expression, où A, B, C et D sont des tables.
+   - En partant de l'expression : 
+
+	```sql
+    SELECT A.nom, B.prenom
+    FROM A, B, C, D
+    WHERE A.idA = B.idA and B.idB = C.idB and C.idC = D.idC and D.prix > 50000 and C.code = 'Z';
+    ```
+   
+   dessinez l'arbre d'expression, où A, B, C et D sont des tables.
 
 3. **Permutations euristiques** (15 minutes)
    - Vrai ou faux : Les permutations euristiques garantissent toujours le plan d'exécution de requête optimal.
@@ -115,4 +123,3 @@ Schéma relationnel pour les services :
 #### Section E : Question de Dissertation - 10 minutes
 
 17. Discutez de l'importance de l'optimisation des requêtes dans les systèmes de gestion de base de données en mettant en lien les objectifs de développememnt durable. Fournissez des exemples de techniques utilisées pour l'optimisation des requêtes et leur impact sur les performances des bases de données.
-
