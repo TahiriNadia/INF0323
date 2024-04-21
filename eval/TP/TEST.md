@@ -17,7 +17,7 @@
    - En partant de l'expression : (A ET B) OU (C ET D), dessinez l'arbre d'expression.
 
 3. **Permutations euristiques** (15 minutes)
-   - Vrai ou faux : Les permutations heuristiques garantissent toujours le plan d'exécution de requête optimal.
+   - Vrai ou faux : Les permutations euristiques garantissent toujours le plan d'exécution de requête optimal.
 
 4. **Réduction, extension et fonctions de coût** (20 minutes)
    - Envisagez une requête avec plusieurs jointures et agrégats. Comment réduiriez-vous le temps d'exécution de cette requête ?
@@ -66,11 +66,50 @@
 #### Section D : Application Pratique - Requêtes SQL - 30 minutes
 
 14. Écrivez une requête SQL pour récupérer les noms de tous les employés ayant un salaire supérieur à 50 000 $.
+Schéma relationnel pour les employés :
+
+   ```plaintext
+   Table : Employés
+   --------------------------------------
+   | ID_Employé | Nom     | Salaire     |
+   --------------------------------------
+   | 1          | Jean    | 60000       |
+   | 2          | Marie   | 48000       |
+   | 3          | Pierre  | 70000       |
+   | ...        | ...     | ...         |
+   --------------------------------------
+   ```
 
 15. Considérez une table de base de données "Commandes" avec les colonnes (ID_Commande, ID_Client, Date_Commande, Montant_Total). Écrivez une requête SQL pour trouver le montant total des commandes passées par chaque client.
+Schéma relationnel pour les commandes :
 
+   ```plaintext
+   Table : Commandes
+   -----------------------------------------------------------
+   | ID_Commande | ID_Client | Date_Commande | Montant_Total |
+   -----------------------------------------------------------
+   | 1           | 101       | 2024-04-01    | 1500          |
+   | 2           | 102       | 2024-04-02    | 2500          |
+   | 3           | 101       | 2024-04-03    | 1800          |
+   | ...         | ...       | ...           | ...           |
+   -----------------------------------------------------------
+   ```
+   
 16. Écrivez une requête SQL pour compter le nombre d'employés dans chaque service.
+Schéma relationnel pour les services :
 
+   ```plaintext
+   Table : Services
+   ---------------------------------------
+   | ID_Service | Nom_Service | Employés |
+   ---------------------------------------
+   | 1          | Ventes      | 20       |
+   | 2          | RH          | 15       |
+   | 3          | IT          | 25       |
+   | ...        | ...         | ...      |
+   ---------------------------------------
+   ```
+   
 ---
 
 #### Section E : Question de Dissertation - 10 minutes
