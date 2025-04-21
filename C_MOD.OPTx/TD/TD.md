@@ -1,97 +1,170 @@
+# Exercices : Estimations de performances d’accès disque
+
+Pour les estimations suivantes, utilisez les paramètres du tableau ci-dessous. On considère une base de données relationnelle avec deux tables : `Prêt` et `Membre`, organisées de façon **sérielle**.
+
+## Paramètres des disques
+
+| Paramètre          | Signification                                                            |
+|--------------------|--------------------------------------------------------------------------|
+| `TempsESDisque(n)` | Temps total de transfert (lecture ou écriture) de *n* octets             |
+| `TempsTrans(n)`    | Temps de transfert de *n* octets sans repositionnement                   |
+| `TempsPosDébut`    | Temps de positionnement initial de la tête de lecture (ex. 10 ms)        |
+| `TempsRotation`    | Temps de latence de rotation du disque (ex. 4 ms)                        |
+| `TempsDépBras`     | Temps de déplacement du bras (ex. 6 ms)                                  |
+| `TauxTransVrac`    | Taux de transfert en vrac (ex. 40 Mo/s)                                  |
+| `TempsESBloc`      | Temps d’entrée/sortie pour un bloc (ex. 11 ms)                           |
+| `TempsTrans`       | Temps de transfert d’un bloc sans repositionnement (ex. 0,1 ms)          |
+| `TailleBloc`       | Taille d’un bloc disque (ex. 4 Ko)                                        |
+
+## Structure des données
+
+### Table `Prêt`
+
+- Nombre de tuples `N_Prêt` : 525 000  
+- Facteur de blocage `FBM_Prêt` : 80  
+- Cardinalité de `idMembre` : 10 000  
+- Ordre maximal de l’index `Ordre_I` : 100  
+
+### Table `Membre`
+
+- Nombre de tuples `N_Membre` : 10 000  
+- Facteur de blocage `FBM_Membre` : 80  
+- Cardinalité de `idMembre` : 10 000  
+- Ordre maximal de l’index `Ordre_I` : 100  
+
+---
+
 ## Exercices
 
-Pour les estimations prenez les valeurs du tbaleu ci-dessous (Tableau 1) pour les paramètres du disque. Soit le schéma relationnel suivant :
+> Pour chaque question, estimer :
+> - Le nombre de blocs concernés
+> - Le temps théorique de calcul
+> - Le temps réel approximatif
 
-Tableau 1 Paramètres des disques
-|Paramètre|Signification|
-|:----|:----|
-|TempsESDisque(n)|Temps de transfert total (lecture ou écriture) de n octets du disque|
-|TempsTrans(n)|Temps de transfert des n octets sans repositionnement|
-|TempsPosDébut|Temps de positionnement au premier octet à transférer (ex : 10 ms)|
-|TempsRotation|Délai de rotation (ex : 4 ms)|
-|TempsDépBras|Temps de déplacement du bras (ex : 6 ms)|
-|TauxTransVrac|Taux de transfert en vrac (ex : 40Mo/sec)|
-|TempsESBloc|Temps de transfert d'un bloc (ex : 11 ms)|
-|TempsTrans|Temps de transfert d'un bloc sans repositionnement (ex : 0,1 ms)|
-|TailleBloc|Taille d'un bloc (ex : 4ko octets)|
+### 1. Balayage complet de la table `Prêt`
 
-La base de données est composé de deux tables (Prêt et Membre) ayant les caractèristiques suivantes :
+Lecture séquentielle avec un seul positionnement initial de la tête de lecture.
 
+---
 
-Figure 1. Structure des tables Membre et Prêt.
-![Structure des tables Membre et Prêt](TD_SGBD.png)
+### 2. Balayage avec lecture par groupes de 20 blocs
 
+Lecture séquentielle de la table `Prêt`, avec lecture de 20 blocs consécutifs à chaque positionnement.
 
-Tableau 2. Statistiques pour une représentation sérielle de la table Prêt.
-|N<sub>Prêt</sub>|525 000|
-|:----|:----|
-|FBM<sub>Prêt</sub>|80|
-|Card<sub>Prêt</sub>(idMembre)|10 000|
-|Ordre<sub>I</sub>|100|
+---
 
-Tableau 3. Statistiques pour une représentation sérielle de la table Membre.
-|N<sub>Membre</sub>|10 000|
-|:----|:----|
-|FBM<sub>Membre</sub>|80|
-|Card<sub>Membre</sub>(idMembre)|10 000|
-|Ordre<sub>I</sub>|100|
+### 3. Sélection par égalité (S=IP) sur `idMembre` (index primaire)
 
+Index B+ primaire sur `idMembre` de `Prêt`.  
+Le facteur de blocage dans les feuilles est de 2/3 de celui utilisé dans l’organisation séquentielle.  
+Les prêts sont répartis uniformément entre les membres.
 
+---
 
-Pour chacune des questions suivantes, vous devez estimer le temps de calcul théorique et le temps de calcul réel afin de les comparer. Supposons pour la suite qu'il s'agit d'une organisation sérielle pour la table Prêt. Estimez le nombre de blocs nécessaires pour les données en supposant qu'il n'y ait aucune fragmentation interne.
+### 4. Taille de l’index primaire sur `idMembre`
 
+Estimer la taille de l’index primaire sur `idMembre` de `Prêt`, en nombre de blocs.
 
-Question 1) 
-```
-Estimez le temps nécessaire à un balayage de la table en supposant un seul positionnement du bras de lecture/écriture.
-```
+---
 
-Question 2) 
-```
-En supposant que le nombre maximal de blocs pouvant être lus sans interruption est 20, estimez le temps nécessaire à un balayage.
-```
+### 5. Sélection par égalité (S=IS) avec index secondaire
 
-Question 3) 
-```
-Estimez le temps d'une sélection par égalité (S=IP) sur le idMembre avec un index primaire arbre-B+ sur le idMembre. Supposez que le facteur de blocage dans les feuilles de l'index primaire est 2/3 du facteur de blocage de la représentation sérielle. Supposez que les prêts sont distribués uniformément entre les membres. L'ordre maximal de l'index est estimé à 100.
-```
+Utilisation d’un index secondaire sur `idMembre` dans `Prêt`.  
+Ne pas tenir compte de l’optimisation évitant la relecture de blocs.  
+Ordre moyen estimé à 2/3 de l’ordre maximal.
 
-Question 4) 
-```
-Estimez la taille de l'index précédent en nombre de blocs.
-```
+---
 
-Question 5) 
-```
-Estimez le temps d'une sélection par égalité (S=IS) sur le idMembre avec un index secondaire arbre-B+ sur le idMembre en ne tenant par compte de l'optimisation qui consiste à éviter la relecture des blocs de données. L'ordre maximal est estimé à 100.
-N.B. Le nombre de blocs au niveau des feuilles (FI) peut être estimé par le nombre de tuples divisé par l'ordre moyen de l'index (estimé à 2/3 de l'ordre maximal).
-```
+### 6. Jointure `Prêt-Membre` par boucles imbriquées multi-blocs (BIM)
 
-Question 6) 
-```
-Estimez le temps nécessaire pour effectuer la jointure Prêt-Membre par l’algorithme des boucles imbriquées multi-blocs (BIM). Produisez deux estimations, l'une avec Prêt comme table externe et l'autre avec Membre comme table externe. La taille d’espace mémoire centrale disponible en nombre de blocs est estimée à 50.
-```
+Deux cas :
+- `Prêt` table externe
+- `Membre` table externe  
+Mémoire disponible : 50 blocs.
 
-Question 7) 
-```
-Estimez le temps nécessaire pour effectuer la même jointure par la boucle imbriquée avec index (BII) en utilisant un index primaire sur l’attribut de jointure (idMembre) pour la table Prêt.
-```
+---
 
-Question 8) 
-```
-Même question qu’en 7) en utilisant un index secondaire sur l’attribut de jointure (idMembre) pour la table Prêt. Supposez que l’optimisation qui consiste à éviter la lecture des blocs pour l’accès par index est utilisée pour la sélection par l’index.
-```
+### 7. Jointure par boucle imbriquée avec index (BII)
 
-Question 9) 
-```
-Même question qu’en 7) en utilisant un index primaire sur l’attribut de jointure (idMembre) pour la table Membre. L'ordre maximal est estimé à 100.
-```
+Index primaire sur `idMembre` dans la table `Prêt`.
 
-Question 10) 
-```
-Même question qu’en 9) en utilisant un index secondaire sur l’attribut de jointure (idMembre) pour la table Membre. Supposez que l’optimisation qui consiste à éviter la lecture des blocs pour l’accès par index est utilisée pour la sélection par l’index. L'ordre maximal est estimé à 100.
-```
+---
 
+### 8. Jointure BII avec index secondaire optimisé
 
+Index secondaire sur `idMembre` de `Prêt`, avec optimisation activée (évite relectures de blocs).
 
+---
 
+### 9. Jointure BII avec index primaire sur `Membre`
+
+Index primaire sur `idMembre` dans `Membre`.
+
+---
+
+### 10. Jointure BII avec index secondaire sur `Membre`
+
+Index secondaire sur `idMembre` dans `Membre`, avec optimisation activée.
+
+---
+
+### 11. Tri externe de la table `Prêt`
+
+Tri complet de la table `Prêt` sur `idMembre` avec un tri externe en deux phases.
+
+---
+
+### 12. Estimation du coût d’un `GROUP BY`
+
+Effectuer `GROUP BY idMembre` sur `Prêt`.
+
+---
+
+### 13. Projection avec élimination de doublons
+
+Projection sur `idMembre` dans `Prêt`, avec suppression des doublons.
+
+---
+
+### 14. Intersection entre `Prêt` et `Membre`
+
+Intersection entre les identifiants de membres dans `Prêt` et `Membre`.
+
+---
+
+### 15. Requête d’agrégation (`COUNT`, `SUM`)
+
+Requête : `SELECT COUNT(*), SUM(montant)` sur `Prêt`.
+
+---
+
+### 16. Suppression ciblée
+
+Suppression d’un tuple `idMembre = X`, avec ou sans index.
+
+---
+
+### 17. Mise à jour sans index
+
+Mise à jour de `montant` pour tous les prêts d’un membre donné, sans index.
+
+---
+
+### 18. Mise à jour avec index secondaire
+
+Même mise à jour que la question 17, avec index secondaire sur `idMembre`.
+
+---
+
+### 19. Insertion de 10 000 prêts
+
+Ajout de 10 000 nouveaux prêts à la table `Prêt`, organisation séquentielle.  
+Supposer qu’il reste de l’espace dans les blocs existants.
+
+---
+
+### 20. Reconstruction d’un index B+
+
+Reconstruction complète d’un index B+ sur `idMembre` de `Prêt`, après chargement massif de données.
+
+---
