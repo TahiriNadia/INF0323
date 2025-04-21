@@ -35,7 +35,7 @@ Fournir un exemple de relation respectant la 3FN mais violant la FNBC.
 
 ### Question 5
 Présenter formellement la définition de la cinquième forme normale (5FN).  
-Pourquoi la 5FN est-elle rarement appliquée dans les bases de données pratiques ?
+Pourquoi la 5FN est-elle rarement appliquée en pratique ?
 
 ---
 
@@ -44,22 +44,49 @@ Pourquoi la 5FN est-elle rarement appliquée dans les bases de données pratique
 ### Question 6
 La relation suivante est-elle en 1FN ? Si non, proposer une normalisation.
 
+**Relation Étudiant :**
+
 | Étudiant | Matières     | Notes    |
 |:--------:|:------------:|:--------:|
 | Dupont   | Math, Info   | 15, 14   |
 | Martin   | Info         | 12       |
 
+---
+
 ### Question 7
 Considérons la relation R(A, B, C) avec les dépendances fonctionnelles suivantes :
+
 - A → B
 - B → C
 
-Décomposer R en un ensemble de relations respectant la FNBC.
+Décomposer R en un ensemble de relations satisfaisant la FNBC.
+
+**Schéma de départ :**
+
+| A (clé) | B | C |
+|:-------:|:-:|:-:|
+
+---
 
 ### Question 8
 À partir des dépendances fonctionnelles suivantes, inférer un schéma relationnel minimal :
+
 - CodeProduit → NomProduit, Prix
 - CodeProduit, CodeMagasin → Stock
+
+**Relations attendues :**
+
+1. **Produit :**
+
+| CodeProduit (PK) | NomProduit | Prix |
+|:----------------:|:----------:|:----:|
+
+2. **Stock :**
+
+| CodeProduit (FK) | CodeMagasin (FK) | Stock |
+|:----------------:|:---------------:|:-----:|
+
+---
 
 ### Question 9
 Donner un exemple concret de situation nécessitant une normalisation jusqu'à la 5FN.
@@ -94,6 +121,11 @@ Considérons la relation R(U, V, W, X, Y) avec les dépendances fonctionnelles s
 
 Déterminer tous les candidats clés de R.
 
+**Schéma de départ :**
+
+| U | V | W | X | Y |
+|:-:|:-:|:-:|:-:|:-:|
+
 ---
 
 ## Partie 4 : Cas pratiques complexes
@@ -110,6 +142,8 @@ avec les dépendances fonctionnelles :
 
 Normaliser cette relation jusqu'à la FNBC.
 
+---
+
 ### Question 16
 Énoncer les étapes successives pour normaliser une relation jusqu'à la 5FN.
 
@@ -124,7 +158,7 @@ Un ensemble minimal de dépendances fonctionnelles est-il unique ? Justifiez vot
 Dans quels cas la dénormalisation est-elle préférable en conception de bases de données relationnelles ? Donner un exemple concret.
 
 ### Question 19
-Comparer les avantages et les inconvénients :
+Comparer les avantages et inconvénients :
 - d'un modèle très normalisé (jusqu'à la 5FN),
 - d'un modèle modérément normalisé (jusqu'à la 3FN).
 
