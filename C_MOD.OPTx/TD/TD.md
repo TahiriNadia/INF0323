@@ -18,6 +18,9 @@ Pour les estimations suivantes, utilisez les paramètres du tableau ci-dessous. 
 
 ## Structure des données
 
+![image](https://github.com/user-attachments/assets/007949e8-f919-4558-8a35-ff1b472be49f)
+
+
 ### Table `Prêt`
 
 - Nombre de tuples `N_Prêt` : 525 000  
