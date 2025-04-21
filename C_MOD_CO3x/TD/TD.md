@@ -1,77 +1,139 @@
-## Exercices
+# TD : Approfondissement de la Conception Relationnelle
 
-Pour les estimations prenez les valeurs du tbaleu ci-dessous (Tableau 1) pour les paramètres du disque. Soit le schéma relationnel suivant :
+## Module : C_MOD_CO3x
 
-Tableau 1 Paramètres des disques
-|Paramètre|Signification|
-|:----|:----|
-|TempsESDisque(n)|Temps de transfert total (lecture ou écriture) de n octets du disque|
-|TempsTrans(n)|Temps de transfert des n octets sans repositionnement|
-|TempsPosDébut|Temps de positionnement au premier octet à transférer (ex : 10 ms)|
-|TempsRotation|Délai de rotation (ex : 4 ms)|
-|TempsDépBras|Temps de déplacement du bras (ex : 6 ms)|
-|TauxTransVrac|Taux de transfert en vrac (ex : 40Mo/sec)|
-|TempsESBloc|Temps de transfert d'un bloc (ex : 11 ms)|
-|TempsTrans|Temps de transfert d'un bloc sans repositionnement (ex : 0,1 ms)|
-|TailleBloc|Taille d'un bloc (ex : 4ko octets)|
+### Objectifs
+- Maîtriser la normalisation jusqu'à la cinquième forme normale (5FN).
+- Comprendre et appliquer les concepts de première forme normale (1FN) et de forme normale de Boyce-Codd (FNBC).
+- Être capable d'inférer directement un schéma relationnel à partir d'un ensemble de dépendances fonctionnelles (DF).
 
-La base de données est composé de deux tables (Prêt et Membre) ayant les caractèristiques suivantes :
+---
 
+## Consignes générales
+- Répondez de manière claire, précise et structurée.
+- Justifiez systématiquement vos réponses par des définitions, raisonnements et exemples formels.
+- Utilisez des notations formelles adaptées.
+- Remettez votre travail au format PDF ou Markdown.
 
-Figure 1. Structure des tables Membre et Prêt (APRÈS NORMALISATION).
-![Structure des tables Membre et Prêt](TD_SGBD1.png)
+---
 
+## Partie 1 : Rappels fondamentaux
 
-Tableau 2. Statistiques pour une représentation sérielle de la table Prêt.
-|N<sub>Prêt</sub>|525 000|
-|:----|:----|
-|FBM<sub>Prêt</sub>|80|
-|Card<sub>Prêt</sub>(idMembre)|10 000|
-|Ordre<sub>I</sub>|100|
+### Question 1
+Définir la première forme normale (1FN).  
+Donner un exemple de relation qui ne satisfait pas cette forme.
 
-Tableau 3. Statistiques pour une représentation sérielle de la table Membre.
-|N<sub>Membre</sub>|10 000|
-|:----|:----|
-|FBM<sub>Membre</sub>|80|
-|Card<sub>Membre</sub>(idMembre)|10 000|
-|Ordre<sub>I</sub>|100|
+### Question 2
+Quels sont les problèmes potentiels lorsqu'une relation n'est pas en 1FN ?
 
+### Question 3
+Définir la forme normale de Boyce-Codd (FNBC).  
+Quelle est la principale différence entre la 3FN et la FNBC ?
 
-Figure 2. Structure de la table MembrePrêt (AVANT NORMALISATION).
-![Structure de la table MembrePrêt](TD_SGBD.png)
+### Question 4
+Fournir un exemple de relation respectant la 3FN mais violant la FNBC.
 
-Tableau 4. Statistiques pour une représentation sérielle de la table MembrePret.
-|N<sub>Membre</sub>|525 000|
-|:----|:----|
-|FBM<sub>Membre</sub>|80|
-|Card<sub>Membre</sub>(idMembre)|10 000|
-|Ordre<sub>I</sub>|100|
+### Question 5
+Présenter formellement la définition de la cinquième forme normale (5FN).  
+Pourquoi la 5FN est-elle rarement appliquée dans les bases de données pratiques ?
 
-Pour chacune des questions suivantes, vous devez estimer le temps de calcul théorique et le temps de calcul réel afin de les comparer. Supposons pour la suite qu'il s'agit d'une organisation sérielle pour la table Prêt. Estimez le nombre de blocs nécessaires pour les données en supposant qu'il n'y ait aucune fragmentation interne.
+---
 
+## Partie 2 : Applications pratiques
 
-Question 1) 
-```
-Estimez le temps nécessaire à un balayage de la table en supposant un seul positionnement du bras de lecture/écriture.
-```
+### Question 6
+La relation suivante est-elle en 1FN ? Si non, proposer une normalisation.
 
-Question 2) 
-```
-Estimez le temps d'une sélection par égalité (S=IP) sur le idMembre avec un index primaire arbre-B+ sur le idMembre. Supposez que le facteur de blocage dans les feuilles de l'index primaire est 2/3 du facteur de blocage de la représentation sérielle. Supposez que les prêts sont distribués uniformément entre les membres. L'ordre maximal de l'index est estimé à 100.
-```
+| Étudiant | Matières     | Notes    |
+|:--------:|:------------:|:--------:|
+| Dupont   | Math, Info   | 15, 14   |
+| Martin   | Info         | 12       |
 
-Question 3) 
-```
-Estimez le temps d'une sélection par égalité (S=IS) sur le idMembre avec un index secondaire arbre-B+ sur le idMembre en ne tenant par compte de l'optimisation qui consiste à éviter la relecture des blocs de données. L'ordre maximal est estimé à 100.
-```
+### Question 7
+Considérons la relation R(A, B, C) avec les dépendances fonctionnelles suivantes :
+- A → B
+- B → C
 
-Question 4) 
-```
-Estimez le temps nécessaire pour effectuer la jointure Prêt-Membre par l’algorithme des boucles imbriquées multi-blocs (BIM). Produisez deux estimations, l'une avec Prêt comme table externe et l'autre avec Membre comme table externe. La taille d’espace mémoire centrale disponible en nombre de blocs est estimée à 50.
-```
+Décomposer R en un ensemble de relations respectant la FNBC.
 
-Question 5) 
-```
-Estimez le temps nécessaire pour effectuer la même jointure par la boucle imbriquée avec index (BII) en utilisant un index primaire sur l’attribut de jointure (idMembre) pour la table Prêt.
-```
+### Question 8
+À partir des dépendances fonctionnelles suivantes, inférer un schéma relationnel minimal :
+- CodeProduit → NomProduit, Prix
+- CodeProduit, CodeMagasin → Stock
 
+### Question 9
+Donner un exemple concret de situation nécessitant une normalisation jusqu'à la 5FN.
+
+---
+
+## Partie 3 : Approfondissements théoriques
+
+### Question 10
+Qu'est-ce qu'une décomposition sans perte ? Illustrer avec un exemple.
+
+### Question 11
+Définir la dépendance multivaluée (DMV).  
+Pourquoi est-elle importante pour atteindre la quatrième forme normale (4FN) ?
+
+### Question 12
+Expliquer comment déterminer une clé primaire à partir d'un ensemble de dépendances fonctionnelles.
+
+### Question 13
+Expliquer la différence entre :
+- Dépendance fonctionnelle
+- Dépendance fonctionnelle partielle
+- Dépendance fonctionnelle transitive
+
+Illustrer chaque notion par un exemple.
+
+### Question 14
+Considérons la relation R(U, V, W, X, Y) avec les dépendances fonctionnelles suivantes :
+- U → V
+- V → W
+- (U, X) → Y
+
+Déterminer tous les candidats clés de R.
+
+---
+
+## Partie 4 : Cas pratiques complexes
+
+### Question 15
+Considérons la relation suivante :
+
+| Commande | Produit | Fournisseur | Quantité |
+|:--------:|:-------:|:-----------:|:--------:|
+
+avec les dépendances fonctionnelles :
+- (Commande, Produit) → Quantité
+- Produit → Fournisseur
+
+Normaliser cette relation jusqu'à la FNBC.
+
+### Question 16
+Énoncer les étapes successives pour normaliser une relation jusqu'à la 5FN.
+
+### Question 17
+Un ensemble minimal de dépendances fonctionnelles est-il unique ? Justifiez votre réponse.
+
+---
+
+## Partie 5 : Questions ouvertes / Discussions
+
+### Question 18
+Dans quels cas la dénormalisation est-elle préférable en conception de bases de données relationnelles ? Donner un exemple concret.
+
+### Question 19
+Comparer les avantages et les inconvénients :
+- d'un modèle très normalisé (jusqu'à la 5FN),
+- d'un modèle modérément normalisé (jusqu'à la 3FN).
+
+### Question 20
+Proposer une méthode systématique pour inférer directement un schéma relationnel respectant la FNBC à partir d'un ensemble de dépendances fonctionnelles.
+
+---
+
+## Ressources complémentaires
+- C. J. Date, *An Introduction to Database Systems*
+- Elmasri & Navathe, *Fundamentals of Database Systems*
+- Notes de cours : *Normalisation avancée*, Polytechnique Montréal
